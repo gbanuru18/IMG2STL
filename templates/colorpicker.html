@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/colorpicker.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/colorCanvasMain.css') }}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+            var images = ["{{filename}}"]; 
+
+    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/colorCanvasMain.js') }}"></script>
+</head>
+
+<body>
+{% include "template.html" %}
+
+{% block content %}
+{% endblock %}
+
+    <center>
+
+        <div class="wrapper">
+        <div class="image">
+            <form action="{{ url_for('home') }}">
+            <input type="submit" value="Change Image" name="gohome"><br>
+            </form>
+            <br>
+            <canvas id="panel" width="250px" height="250px"></canvas>
+        </div>
+
+        <div class="form">
+            <center>Preview:<div id="preview"></div></center>
+
+            <form method="post" action="/action2" enctype="multipart/form-data">
+            <dl>
+            Sensitivity:
+
+                <center><div class="slidecontainer">
+            <input type="range" min="1" max="100" value="{{sliderVal}}" class="slider" id="myRange" name="thresh">
+            Value: <span id="demo"></span>
+            </div></center>
+
+
+            <p>List up to 7 Colors (Format: R,G,B)</p>
+
+            {%for i in range(1, 8)%}
+
+            <div>
+                Color {{i}}: <input type="text" name="color{{i}}" value="{{colorMap['color'+i|string]}}" id="color{{i}}">
+                <div class="box inline selectColor" id="color{{i}}box">&nbsp;</div>
+                <div class="box inline cancel">x</div>
+
+            </div>
+            {%endfor%}
+            </dl>
+
+            <input type="submit" value="Split Colors">
+            </form>
+        </div>
+        </div>
+      <br>
+    </center>
+
+<script>
+    var closebtns = document.getElementsByClassName("cancel");
+    var i;
+
+    for (i = 0; i < closebtns.length; i++) {
+    closebtns[i].addEventListener("click", function() {
+    this.parentElement.children[0].value = '';
+    this.parentElement.children[1].style.background="rgb(255,255,255)";
+    });
+    };
+
+    var colorbxs = document.getElementsByClassName("selectColor");
+    var y;
+
+    colorbxs[0].classList.add("selected");
+
+    for (y = 0; y < colorbxs.length; y++) {
+        colorbxs[y].addEventListener("click", function() {
+        for (z = 0; z < colorbxs.length; z++) {
+            colorbxs[z].classList.remove("selected");
+
+        };
+
+        this.classList.add("selected");
+    });
+    };
+
+
+  var slider = document.getElementById("myRange");
+  var output = document.getElementById("demo");
+  output.innerHTML = slider.value;
+
+  slider.oninput = function() {
+  output.innerHTML = this.value;
+  }
+
+  function realRGB(inputText){
+      var RGB = inputText.split(',');
+      if (RGB.length == 3 && !isNaN(RGB[0]) && !isNaN(RGB[1]) && !isNaN(RGB[2])
+      && Number.parseInt(RGB[0]) >= 0 && Number.parseInt(RGB[0]) <= 255
+      && Number.parseInt(RGB[1]) >= 0 && Number.parseInt(RGB[1]) <= 255
+      && Number.parseInt(RGB[2]) >= 0 && Number.parseInt(RGB[2]) <= 255){
+        return 1;
+        }
+      else{
+        return 0;
+      }
+   }
+
+  function manageColorBox(colorBox, colorValue){
+  var isRGB = realRGB(colorValue);
+  if (isRGB == 1){
+    document.getElementById(colorBox).style.background="rgb("+colorValue+")";}
+  else{
+    document.getElementById(colorBox).style.background="rgb(255,255,255)";}
+  }
+
+  manageColorBox('color1box', document.getElementById("color1").value);
+  manageColorBox('color2box', document.getElementById("color2").value);
+  manageColorBox('color3box', document.getElementById("color3").value);
+  manageColorBox('color4box', document.getElementById("color4").value);
+  manageColorBox('color5box', document.getElementById("color5").value);
+  manageColorBox('color6box', document.getElementById("color6").value);
+  manageColorBox('color7box', document.getElementById("color7").value);
+
+  $('input[id=color1]').keyup(function(){manageColorBox('color1box', this.value)});
+  $('input[id=color2]').keyup(function(){manageColorBox('color2box', this.value)});
+  $('input[id=color3]').keyup(function(){manageColorBox('color3box', this.value)});
+  $('input[id=color4]').keyup(function(){manageColorBox('color4box', this.value)});
+  $('input[id=color5]').keyup(function(){manageColorBox('color5box', this.value)});
+  $('input[id=color6]').keyup(function(){manageColorBox('color6box', this.value)});
+  $('input[id=color7]').keyup(function(){manageColorBox('color7box', this.value)});
+
+  </script>
+</body>
+</html>

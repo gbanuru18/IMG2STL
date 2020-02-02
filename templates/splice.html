@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Your Results</title>
+
+  </head>
+  <body>
+    {% extends "colorpicker.html" %}
+    {% block content %}
+    <center><h1>Split Images ({{percent}}% Captured)</h1></center> 
+
+    <center>
+<table>
+        {%for i in range(0,length)%}
+<td>
+      <div><div><img src="{{spliceList[i]}}" style="max-width:250px;height:auto;"/></div>
+        <center><div>
+            <form method="post" action="/action3">
+            <input type="submit" value="Download Image" name="{{spliceList[i]}}">
+            </form>
+            <br>
+            <form method="post" action="/action4">
+            <input type="submit" value="Download STL" name="{{spliceList[i]}}">
+            </form>
+        </div></center></div>
+</td>
+        {%endfor%}
+</table>
+      </center>
+    <br>
+    {% endblock %}
+  </body>
+</html>

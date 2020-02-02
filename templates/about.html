@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>About Flask</title> 
+  </head>
+  <body>
+    {% extends "template.html" %}
+    {% block content %}
+
+    <center><h1>What is IMG2STL</h1></center>
+    <p><b>IMG2STL solves a 3D printing problem.</b> If I want to 3D print an image, each color in the image must be a separate STL. I own a Prusa MK3S MMU2S 3D printer which can print in 5 colors. So my image must be simplified to a set number of colors. (which this program performs). Then each color is masked to be its own image which can be uploaded to Selva3D to produce the STL for that color (or the native stl_tools library can produce the STL directly).
+        IMG2STL can do 3 things:</p>
+<ol>
+  <li>You can convert an image to use a specific color space (ie. only green, black, yellow, etc.) </li>
+  <li>You can splice an image such that each color space is a separate B&W image with a grey border. The grey border is added because it prevents Selva3D from resizing each image when converting the image to a STL.</li>
+  <li>You can download the STL of a spliced image created using the stl_tools Python Library.</li>
+</ol>
+
+<br><br><br><br><br>
+ <center><h2>Notes</h2></center>
+
+      <ol>
+        <li>Use PNGs instead of JPEGs. JPEGs compress images and lose image quality. PNGs are uncompressed images.</li>
+        <li>Selva3D uses its own convolution smoothing on free STL downloads. This reduces the detail of the image drastically which is bad because the STL is not an exact representation of each color.</li>
+        <li>This implementation removes salt and pepper from spliced images using a median filter without drastic effects.</li>
+        <li>If Black (0,0,0) is one of your chosen colors use (5,5,5) instead. Choosing pure Black messes with PNG images.</li>
+        <li><b>Improvements To Make:</b> Match pixels lost through median filter smoothing to its color relatives (could be done by matching such pixels to closest color that is not its assigned color). Also check how native STLs appear with no smoothing.</li>
+      </ol>
+
+    <br><br><br><br><br>    <br><br><br><br><br>
+
+
+<center>
+    <h2>Author: Gautam Banuru</h2>
+    <p>UC Irvine senior - loves computer vision</p><br>
+</center>
+    {% endblock %}
+  </body>
+</html>

@@ -1,4 +1,4 @@
-# Color Image To STL
+# IMG2STL
 
 This project solves a 3D printing problem. If I want to 3D print an image, each color in the image must be a separate STL. I own a Prusa MK3S MMU2S 3D printer which can print in 5 colors. So my image must be simplified to a set number of colors. (which this program performs). Then each color is masked to be its own image which can be uploaded to Selva3D to produce the STL for that color (or the native stl_tools library can produce the STL directly).
 

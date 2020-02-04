@@ -25,6 +25,16 @@ I wrote the program within Jupyter notebooks and transferred the .py file to PyC
 
 Additonally, there is a simple web interface created with Flask that you can use. Just execute main.py.
 
+<p align="center">
+  <img src="images/FlaskSelector.png"><br>
+  <b>Color Selector Page</b><br>
+</p>
+
+<p align="center">
+  <img src="images/FlaskResults.png"><br>
+  <b>Results Page</b><br>
+</p>
+
 ## 1. Convert Image to Use Color Space
 
 Color Space:

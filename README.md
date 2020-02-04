@@ -23,6 +23,8 @@ I wrote the program within Jupyter notebooks and transferred the .py file to PyC
 - colormath (version 3.0.0)
 - opencv-python (version 4.1.1.26) (used for import cv2)
 
+Additonally, there is a simple web interface created with Flask that you can use. Just execute main.py.
+
 ## 1. Convert Image to Use Color Space
 
 Color Space:

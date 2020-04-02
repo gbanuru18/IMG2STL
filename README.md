@@ -123,3 +123,10 @@ Note: Black is the chosen color. White is the background. Grey is the border.
 - stl_tools
   - Pros: Colors are more cohesively connected for a stronger 3D print
   - Cons: Model is rougher, akin to being slightly pixelated
+
+<br>
+<p align="center">
+  <img src="images/Rick3DPrints.JPG"><br>
+  <b>Physical 3D Prints from the STLs created using IMG2STL. Looks good!</b><br>
+</p>
+

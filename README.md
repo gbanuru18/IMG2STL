@@ -15,13 +15,17 @@ This RGB Image Splicer can do two things:
 - Improvements: Match pixels lost through median filter smoothing to its color relatives (could be done by matching such pixels to closest color that is not its assigned color). Also check how native STLs appear with no smoothing. 
 
 ## How To Use Program
-I wrote the program within Jupyter notebooks and transferred the .py file to PyCharm. Install the following libraries in PyCharm to run the program:
-- scipy (version 1.3.1)
-- matplotlib (version 3.1.1)
-- numpy (version 1.17.0)
-- stl_tools (version 0.2.2) (important because version 3.0 did not work)
-- colormath (version 3.0.0)
-- opencv-python (version 4.1.1.26) (used for import cv2)
+
+On the command line run :
+
+conda create -n img2stlenv python=3.7.4 # creates virtual environment
+conda activate img2stlenv
+
+pip install -r requirements.txt # installs necessary libraries
+
+python3 main.py # run program
+
+conda deactivate # leave virtual environment
 
 Additonally, there is a simple web interface created with Flask that you can use. Just execute main.py.
 

@@ -1,5 +1,11 @@
 # IMG2STL
 
+<br>
+<p align="center">
+  <img src="images/Rick3DPrints.JPG"><br>
+  <b>Physical 3D Prints from the STLs created using IMG2STL. Looks good!</b><br>
+</p>
+
 This project solves a 3D printing problem. If I want to 3D print an image, each color in the image must be a separate STL. I own a Prusa MK3S MMU2S 3D printer which can print in 5 colors. So my image must be simplified to a set number of colors. (which this program performs). Then each color is masked to be its own image which can be uploaded to Selva3D to produce the STL for that color (or the native stl_tools library can produce the STL directly).
 
 This RGB Image Splicer can do two things:
@@ -127,10 +133,4 @@ Note: Black is the chosen color. White is the background. Grey is the border.
 - stl_tools
   - Pros: Colors are more cohesively connected for a stronger 3D print
   - Cons: Model is rougher, akin to being slightly pixelated
-
-<br>
-<p align="center">
-  <img src="images/Rick3DPrints.JPG"><br>
-  <b>Physical 3D Prints from the STLs created using IMG2STL. Looks good!</b><br>
-</p>
 

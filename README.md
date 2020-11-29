@@ -26,10 +26,15 @@ cd into the IMG2STL folder
 On the command line run:
 
 pip3 install virtualenv # install if not present
+
 virtualenv -p python3 venv # running python 3.7.4 - creating virtual environment
+
 source venv/bin/activate
+
 pip3 install -r requirements.txt # installs necessary libraries
+
 python3 main.py # run program, click crtl+c to quit
+
 deactivate # leave virtual environment once complete with tasks
 
 Additonally, there is a simple web interface created with Flask that you can use. Just execute python3 main.py.
